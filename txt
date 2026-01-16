@@ -1,7 +1,16 @@
 # installer prettier 
 # install nodemon  [from ]
+# dotenv package
+# npm install mongoose 
+# npm install express
 
 
+/*
+  whenever wanna connect with db -problems might come -> so use try catch/ promises
+
+  DB is always is in another contient
+
+  */
 
 PS C:\Youtube Backend> npm init
 This utility will walk you through creating a package.json file.
