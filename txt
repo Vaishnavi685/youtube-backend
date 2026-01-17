@@ -3,7 +3,9 @@
 # dotenv package
 # npm install mongoose 
 # npm install express
-
+# mongoose-aggregate-paginate-v2    // allows to write aggragite queries
+##  bcrypt  // allows u to hash yr password
+##  jsonwebtoken
 
 /*
   whenever wanna connect with db -problems might come -> so use try catch/ promises
