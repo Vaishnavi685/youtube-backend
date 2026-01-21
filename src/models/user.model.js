@@ -59,7 +59,7 @@ userSchema.pre("save", async function (next) { // next middleware
     if(!this.isModified("password")) return next();
 
     // encrypt(modify) password only when pass is modified !
-    this.password = bcrypt.hash(this.password, 10)
+    this.password = await bcrypt.hash(this.password, 10)
     next()
 })
 
