@@ -6,7 +6,10 @@
 # mongoose-aggregate-paginate-v2    // allows to write aggragite queries
 ##  bcrypt  // allows u to hash yr password
 ##  jsonwebtoken
-
+for file upload 
+## multer 
+# express-fileupload
+# npm i multer
 /*
   whenever wanna connect with db -problems might come -> so use try catch/ promises
 

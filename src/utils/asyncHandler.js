@@ -1,5 +1,5 @@
 const asyncHandler = (requestHandler) =>{
-    (req, res, next) => {
+    return (req, res, next) => {
         Promise.resolve(requestHandler(req,res, next)).
         catch((err) => next(err))
     }
@@ -19,4 +19,6 @@ const asynHandler = (fn) => async (req, res, next) => {
 }
 
 */
-export {asynHandler}
+export default asyncHandler
+
+// in this file all req ,res comes and we can handle throught the promises 

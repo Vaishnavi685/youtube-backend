@@ -2,7 +2,7 @@ import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser" // access cookies from users browser and can set cookies too
 
-const app = express()
+const app = express();
 
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
@@ -16,5 +16,15 @@ app.use(express.static("public")) // to serve static files from public folder
 app.use(cookieParser()) // to parse cookies from request
 
 
+// routes import
+import userRouter from  './routes/user.routes.js';
 
-export default app
+
+
+// routes declaration
+app.use("/api/v1/user", userRouter)
+
+
+// http://localhost:8000/api/v1/user/register
+
+export default app;

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { DB_NAME } from "../constants.js"; 
 
+
 // # Things that should remember to talk to db:- 
 // async & await becoz db takes time
 // try catch / promices
@@ -16,3 +17,4 @@ const connection = async () => {
 }
 
 export default connection;
+
