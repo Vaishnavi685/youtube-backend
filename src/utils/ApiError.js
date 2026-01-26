@@ -1,6 +1,8 @@
+console.log("LOADED ApiError from:", import.meta.url)
+
 class ApiError extends Error{
     constructor(
-        statuscode,
+        statusCode,
         message= "something went wrong",
         errors = [],
         stack = ""
@@ -11,7 +13,9 @@ class ApiError extends Error{
         this.message = message,
         this.success = false;
         this.errors = errors
-        
+         
+        console.log("ApiError constructor args:", statusCode, message)
+
         if(stack){
             this.stack = stack
 

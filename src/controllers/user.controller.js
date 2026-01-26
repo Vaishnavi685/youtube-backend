@@ -21,8 +21,12 @@ Steps to register user ➖ [lec 13]
 9]  return res
 */
     const {fullname, username, email, password} = req.body
-    console.log("email: ", email);
+   // console.log("email: ", email);
 
+  /*  console.log("HEADERS:", req.headers["content-type"]);
+    console.log("BODY:", req.body);
+    console.log("FILES:", req.files);
+    
    /* if(fullname === ""){
         throw new ApiError(400, "fullname is required")
     }   OR */
@@ -35,7 +39,7 @@ Steps to register user ➖ [lec 13]
             throw new ApiError(400,"all fields are required")
     }
     
-    const existedUser = User.findOne({
+    const existedUser = await User.findOne({
         $or: [{username},{email}]
     })
 
@@ -44,15 +48,27 @@ Steps to register user ➖ [lec 13]
         throw new ApiError(409, "User with email or username already exists!")
     }
 
-    const avatarLocalPath = req.files?.avatar[0]?.path;
-    const coverImageLoacalPath = req.files?.coverImage[0]?.path; 
+    //console.log( "req :",req.files);
 
+    const avatarLocalPath = req.files?.avatar[0]?.path;
+    // const coverImageLocalPath = req.files?.coverImage[0]?.path; 
+
+    let coverImageLocalPath;
+    if(req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0){
+        coverImageLocalPath = req.files.coverImage[0].path
+    }
+    /*
+    console.log("AVATAR PATH:", avatarLocalPath);
+    console.log("COVER PATH:", coverImageLocalPath);
+`   */
     if (!avatarLocalPath) {
         throw new ApiError(400," Avatar file is Required!")
     }
 
     const avatar = await uploadOnCloudinary( avatarLocalPath )
-    const coverImage = await uploadOnCloudinary( coverImageLoacalPath )
+    const coverImage = await uploadOnCloudinary( coverImageLocalPath )
+
+    /* console.log("AVATAR : ", avatar)  */
 
     if (!avatar) {
         throw new ApiError(400," Avatar file is required ")

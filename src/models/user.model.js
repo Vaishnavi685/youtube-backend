@@ -54,13 +54,13 @@ const userSchema = new Schema(
 )
 // pre hook -> do something befor save action
 
-userSchema.pre("save", async function (next) { // next middleware
+userSchema.pre("save", async function () { // next middleware
 
-    if(!this.isModified("password")) return next();
+    if(!this.isModified("password")) return;
 
     // encrypt(modify) password only when pass is modified !
     this.password = await bcrypt.hash(this.password, 10)
-    next()
+    
 })
 
 // costoum methods
